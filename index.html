@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Landing Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #landing-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .star {
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        #comment-box {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #comment-input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        #submit-btn {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="landing-container">
+    <h1>Welcome to Our Page!</h1>
+    <p>Please rate your experience:</p>
+
+    <div class="stars" id="stars-container">
+        <span class="star" onclick="rate(1)">★</span>
+        <span class="star" onclick="rate(2)">★</span>
+        <span class="star" onclick="rate(3)">★</span>
+        <span class="star" onclick="rate(4)">★</span>
+        <span class="star" onclick="rate(5)">★</span>
+    </div>
+
+    <div id="comment-box">
+        <textarea id="comment-input" placeholder="Please provide your feedback"></textarea>
+        <button id="submit-btn" onclick="submitFeedback()">Submit</button>
+    </div>
+</div>
+
+<script>
+    let selectedRating = 0;
+
+    function rate(stars) {
+        selectedRating = stars;
+        if (stars < 5) {
+            document.getElementById('comment-box').style.display = 'block';
+        } else {
+            document.getElementById('comment-box').style.display = 'none';
+            // Redirect to Google Business for a 5-star review (Replace the link with your Google Business link)
+            window.location.href = 'https://www.google.com/';
+        }
+    }
+
+    function submitFeedback() {
+        const comment = document.getElementById('comment-input').value;
+        // Save the feedback to a Google Sheet or perform any other desired action
+        console.log(`Rating: ${selectedRating}, Comment: ${comment}`);
+        alert('Thank you for your feedback!');
+    }
+</script>
+
+</body>
+</html>
